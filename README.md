@@ -1,6 +1,7 @@
 # JavaScript Quiz App
 
 This is a simple JavaScript quiz application that tests your knowledge of JavaScript and related web development concepts.
+It is built with an object-oriented approach for better organization and separation of concerns.
 
 ![Quiz App Screenshot](quiz-app-screenshot.png)
 
@@ -13,7 +14,7 @@ This is a simple JavaScript quiz application that tests your knowledge of JavaSc
 
 ## How to Use
 
-1. Clone the repository to your local machine:
+1. Download Zip or clone the repository to your local machine:
 
    ```bash
    git clone https://github.com/anmoljamespilley/Anmol_JS_Lab.git
@@ -37,4 +38,7 @@ const questions = [
 ```
 
 ## Contributors
+- [Anmol James Pilley](https://github.com/anmoljamespilley)
 
+## Thank you
+for using the JavaScript Quiz App! We trust you'll find it both professional and user-friendly, showcasing the latest technologies and design practices in web development.
