@@ -33,10 +33,54 @@ class Question {
     }
 }
 
+class QuizUI {
+    constructor(quiz) {
+        this.quiz = quiz;
+    }
+
+    displayQuestion() {
+        const quizElem = document.getElementById("quiz");
+        if (this.quiz.isEnded()) {
+            this.showScores(quizElem);
+        } else {
+            const questionElem = document.getElementById("question");
+            questionElem.innerText = this.quiz.currentQuestion.text;
+
+            const choices = this.quiz.currentQuestion.options;
+            choices.forEach((choice, index) => {
+                const choiceElem = document.getElementById(`choice${index}`);
+                choiceElem.innerText = choice;
+                this.handleClickOnBtn(`btn${index}`, choice);
+            });
+
+            this.showProgress(quizElem);
+        }
+    }
+
+    showProgress(quizElem) {
+        const progressElem = quizElem.querySelector("#progress");
+        progressElem.innerText = `Question ${this.quiz.questionIndex + 1} of ${this.quiz.questions.length}`;
+    }
+
+    handleClickOnBtn(id, choice) {
+        const buttonElem = document.getElementById(id);
+        const quiz = this.quiz;
+        buttonElem.onclick = function () {
+            quiz.checkAnswer(choice);
+            quizUI.displayQuestion();
+        };
+    }
+
+    showScores(quizElem) {
+        const result = `<h1>Result</h1><h2 id="score">Thank you! Here are your results: <br>Score: ${this.quiz.score}/${this.quiz.questions.length} <br> Marks percentage: ${(this.quiz.score / this.quiz.questions.length) * 100}% </h2>`;
+        quizElem.innerHTML = result;
+    }
+}
+
 const questions = [
     new Question("In CSS, which property is used to change the color of text?",
-                ["background-color", "text-color", "color", "font-color"],
-                "color"),
+                ["background-colour", "text-colour", "colour", "font-colour"],
+                "colour"),
     new Question("Which keyword is used to define a class in Java?",
                 ["class", "void", "int", "new"],
                 "class"),
@@ -52,42 +96,5 @@ const questions = [
 ];
 
 const quiz = new Quiz(questions);
-
-function displayQuestion() {
-    const quizElem = document.getElementById("quiz");
-    if (quiz.isEnded()) {
-        showScores(quizElem);
-    } else {
-        const questionElem = document.getElementById("question");
-        questionElem.innerText = quiz.currentQuestion.text;
-
-        const choices = quiz.currentQuestion.options;
-        choices.forEach((choice, index) => {
-            const choiceElem = document.getElementById(`choice${index}`);
-            choiceElem.innerText = choice;
-            handleClickOnBtn(`btn${index}`, choice);
-        });
-
-        showProgress(quizElem);
-    }
-}
-
-function showProgress(quizElem) {
-    const progressElem = quizElem.querySelector("#progress");
-    progressElem.innerText = `Question ${quiz.questionIndex + 1} of ${quiz.questions.length}`;
-}
-
-function handleClickOnBtn(id, choice) {
-    const buttonElem = document.getElementById(id);
-    buttonElem.onclick = function () {
-        quiz.checkAnswer(choice);
-        displayQuestion();
-    };
-}
-
-function showScores(quizElem) {
-    const result = `<h1>Result</h1><h2 id="score">Thank you! Here are your results: <br>Score: ${quiz.score}/${questions.length} <br> Marks percentage: ${(quiz.score / questions.length) * 100}% </h2>`;
-    quizElem.innerHTML = result;
-}
-
-displayQuestion();
+const quizUI = new QuizUI(quiz);
+quizUI.displayQuestion();
