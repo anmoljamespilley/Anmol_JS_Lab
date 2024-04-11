@@ -1,6 +1,6 @@
 # JavaScript Quiz App
 
-This is a simple JavaScript quiz application that tests your knowledge of JavaScript and related web development concepts.
+This is a simple JavaScript quiz application that tests your knowledge of JavaScript and related web development concepts.<br>
 It is built with an object-oriented approach for better organization and separation of concerns.
 
 ![Quiz App Screenshot](quiz-app-screenshot.png)
