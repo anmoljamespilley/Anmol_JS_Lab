@@ -20,7 +20,7 @@ It is built with an object-oriented approach for better organization and separat
    git clone https://github.com/anmoljamespilley/Anmol_JS_Lab.git
    ```
 
-2. Open the `index.html` file in your web browser to start the quiz.
+2. Open the `quiz.html` file in your web browser to start the quiz.
 
 3. Answer each question by selecting one of the multiple-choice options provided.
 
